@@ -61,10 +61,12 @@ export default function SkillsMissions() {
           <div className="mission-grid">
             {missions.map((m, i) => (
               <div className="mission-card" key={m.title} style={{ '--mission-color': m.color }}>
-                <div className="mission-card__num">M·{String(i + 1).padStart(2, '0')}</div>
-                <div className="mission-card__sub">Badge — {m.badge}</div>
-                <h3>{m.title}</h3>
-                <ul>{m.activities.map(a => <li key={a}>{a}</li>)}</ul>
+                <div className="mission-card__head">
+                  <span className="mission-card__num">Mission {String(i + 1).padStart(2, '0')}</span>
+                  <h3>{m.title}</h3>
+                  <span className="mission-card__badge">★ {m.badge}</span>
+                </div>
+                <ul className="mission-card__list">{m.activities.map(a => <li key={a}>{a}</li>)}</ul>
               </div>
             ))}
           </div>

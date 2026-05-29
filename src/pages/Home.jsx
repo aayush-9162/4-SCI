@@ -12,6 +12,20 @@ const flow = [
   { label: 'Impact', desc: 'Village change' }
 ]
 
+function PillarIcon({ name }) {
+  const p = { width: 28, height: 28, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' }
+  if (name === 'sprout') return (
+    <svg {...p}><path d="M12 22V11"/><path d="M12 11C12 7 9 4 4 4c0 5 3 8 8 7z"/><path d="M12 13c0-3 2.5-5.5 7-5.5 0 4.5-2.5 6.5-7 6z"/></svg>
+  )
+  if (name === 'shield') return (
+    <svg {...p}><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+  )
+  // chart
+  return (
+    <svg {...p}><path d="M4 20V4M4 20h16"/><rect x="7" y="12" width="3" height="5" rx="1" fill="currentColor" stroke="none"/><rect x="12" y="8" width="3" height="9" rx="1" fill="currentColor" stroke="none"/><rect x="17" y="5" width="3" height="12" rx="1" fill="currentColor" stroke="none"/></svg>
+  )
+}
+
 export default function Home() {
   return (
     <>
@@ -55,17 +69,20 @@ export default function Home() {
           </div>
 
           <div className="pillars">
-            <div className="pillar" data-reveal>
+            <div className="pillar" data-reveal style={{ '--pc': '#2D6A4F' }}>
+              <div className="pillar__icon"><PillarIcon name="sprout" /></div>
               <span className="pillar__num">01</span>
               <h3>Students build green skills</h3>
               <p>Hands-on field learning across 12 sustainability domains, validated by teachers and recognised with badges.</p>
             </div>
-            <div className="pillar" data-reveal style={{ '--reveal-delay': '.1s' }}>
+            <div className="pillar" data-reveal style={{ '--pc': '#E76F51', '--reveal-delay': '.1s' }}>
+              <div className="pillar__icon"><PillarIcon name="shield" /></div>
               <span className="pillar__num">02</span>
               <h3>Farmers adopt safer practices</h3>
               <p>Practical, low-cost advice on balanced fertilizer, safe inputs, compost, water-saving and pollinator care.</p>
             </div>
-            <div className="pillar" data-reveal style={{ '--reveal-delay': '.2s' }}>
+            <div className="pillar" data-reveal style={{ '--pc': '#3DA5D9', '--reveal-delay': '.2s' }}>
+              <div className="pillar__icon"><PillarIcon name="chart" /></div>
               <span className="pillar__num">03</span>
               <h3>Villages track real progress</h3>
               <p>Soil tests, compost units, demo plots, water-saving practices — visible on a live community dashboard.</p>
@@ -107,10 +124,12 @@ export default function Home() {
           <div className="mission-grid">
             {missions.map((m, i) => (
               <div className="mission-card" key={m.title} data-reveal style={{ '--mission-color': m.color, '--reveal-delay': `${i * 0.08}s` }}>
-                <div className="mission-card__num">M·{String(i + 1).padStart(2, '0')}</div>
-                <div className="mission-card__sub">Badge — {m.badge}</div>
-                <h3>{m.title}</h3>
-                <ul>{m.activities.map(a => <li key={a}>{a}</li>)}</ul>
+                <div className="mission-card__head">
+                  <span className="mission-card__num">Mission {String(i + 1).padStart(2, '0')}</span>
+                  <h3>{m.title}</h3>
+                  <span className="mission-card__badge">★ {m.badge}</span>
+                </div>
+                <ul className="mission-card__list">{m.activities.map(a => <li key={a}>{a}</li>)}</ul>
               </div>
             ))}
           </div>

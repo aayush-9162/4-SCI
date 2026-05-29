@@ -550,26 +550,13 @@ p { margin: 0 0 1rem; color: var(--ink-soft); }
 .pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 56px;
-  margin-top: 32px;
+  gap: 22px;
+  margin-top: 36px;
 }
-.pillar { padding: 0; }
-.pillar__num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.6rem;
-  color: var(--green-700);
-  line-height: 1;
-  margin-bottom: 18px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--line);
-  display: block;
-  width: fit-content;
-  padding-right: 16px;
-}
-.pillar h3 { margin-bottom: 10px; font-size: 1.18rem; }
+.pillar h3 { margin-bottom: 10px; font-size: 1.2rem; }
 .pillar p { font-size: .98rem; margin: 0; line-height: 1.6; }
 
-@media (max-width: 800px) { .pillars { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 800px) { .pillars { grid-template-columns: 1fr; gap: 18px; } }
 
 /* ============================================================
    DOMAIN GRID — clean pictogram tiles
@@ -605,37 +592,52 @@ p { margin: 0 0 1rem; color: var(--ink-soft); }
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0;
-  margin-top: 40px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  margin-top: 56px;
+  position: relative;
+}
+/* gradient connecting line behind the nodes */
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 34px;
+  left: 7%; right: 7%;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--green-300) 0%, var(--green-600) 55%, var(--accent-2) 100%);
+  z-index: 0;
 }
 .step {
-  padding: 28px 18px;
-  border-right: 1px solid var(--line);
-  text-align: left;
+  text-align: center;
+  padding: 0 8px;
+  position: relative;
+  z-index: 1;
 }
-.step:last-child { border-right: none; }
 .step__icon {
+  width: 68px; height: 68px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: grid; place-items: center;
   font-family: 'DM Serif Display', serif;
-  font-size: 1rem;
-  color: var(--green-700);
-  margin-bottom: 14px;
-  letter-spacing: .04em;
+  font-size: 1.5rem;
+  color: #fff;
+  background: linear-gradient(160deg, var(--green-600), var(--green-ink));
+  border: 5px solid var(--paper);
+  box-shadow: 0 10px 22px -8px rgba(19,61,44,.5), inset 0 1px 0 rgba(255,255,255,.25);
+  letter-spacing: 0;
 }
-.step__label { font-weight: 600; font-size: .95rem; color: var(--ink); margin-bottom: 4px; }
+.step:last-child .step__icon {
+  background: linear-gradient(160deg, var(--accent-2), var(--accent));
+  box-shadow: 0 10px 22px -8px rgba(184,90,42,.5), inset 0 1px 0 rgba(255,255,255,.25);
+}
+.step__label { font-weight: 700; font-size: .98rem; color: var(--ink); margin-bottom: 5px; }
 .step__desc { font-size: .82rem; color: var(--ink-mute); line-height: 1.4; }
 
 @media (max-width: 1024px) {
-  .steps { grid-template-columns: repeat(4, 1fr); }
-  .step:nth-child(4) { border-right: none; }
-  .step:nth-child(n+5) { border-top: 1px solid var(--line); }
+  .steps { grid-template-columns: repeat(4, 1fr); row-gap: 36px; }
+  .steps::before { display: none; }
 }
-@media (max-width: 600px) {
-  .steps { grid-template-columns: 1fr 1fr; }
-  .step:nth-child(2n) { border-right: none; }
-  .step { border-right: 1px solid var(--line) !important; }
-  .step:nth-child(2n) { border-right: none !important; }
-  .step:nth-child(n+3) { border-top: 1px solid var(--line); }
+@media (max-width: 560px) {
+  .steps { grid-template-columns: 1fr 1fr; row-gap: 30px; }
 }
 
 /* ============================================================
@@ -645,47 +647,96 @@ p { margin: 0 0 1rem; color: var(--ink-soft); }
 .mission-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0;
-  border-top: 1px solid var(--line);
+  gap: 20px;
 }
 .mission-card {
-  background: transparent;
-  padding: 36px 28px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  transition: background var(--t-base);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sh-soft);
+  transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
 }
-.mission-card:hover { background: var(--paper-soft); }
+.mission-card:hover { transform: translateY(-6px); box-shadow: var(--sh-lift); }
+.mission-card__head {
+  background: var(--mission-color, var(--green-700));
+  color: #fff;
+  padding: 24px 24px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.mission-card__head::after {
+  content: '';
+  position: absolute;
+  right: -36px; top: -36px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+}
 .mission-card__num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.1rem;
-  color: var(--mission-color, var(--green-700));
-  margin-bottom: 16px;
-  letter-spacing: .04em;
-}
-.mission-card__sub {
+  display: block;
   font-size: .72rem;
-  font-weight: 600;
-  letter-spacing: .14em;
+  font-weight: 700;
+  letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--ink-mute);
-  margin-bottom: 8px;
+  color: rgba(255,255,255,.85);
+  margin-bottom: 10px;
+  position: relative;
 }
-.mission-card h3 { margin-bottom: 14px; font-size: 1.1rem; font-family: 'DM Serif Display', serif; font-weight: 400; }
-.mission-card ul { list-style: none; padding: 0; margin: 14px 0 0; }
-.mission-card li {
-  padding: 6px 0 6px 18px;
+.mission-card__head h3 {
+  color: #fff;
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: 1.35rem;
+  margin: 0 0 16px;
+  position: relative;
+  line-height: 1.15;
+}
+.mission-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,.2);
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 999px;
+  position: relative;
+  backdrop-filter: blur(2px);
+}
+.mission-card__list {
+  list-style: none;
+  padding: 22px 24px 26px;
+  margin: 0;
+}
+.mission-card__list li {
+  padding: 9px 0 9px 30px;
   position: relative;
   font-size: .92rem;
   color: var(--ink-soft);
-  line-height: 1.5;
+  line-height: 1.45;
 }
-.mission-card li::before {
+.mission-card__list li:not(:last-child) { border-bottom: 1px solid var(--line); }
+.mission-card__list li::before {
   content: '';
   position: absolute;
-  left: 0; top: 14px;
-  width: 8px; height: 1px;
-  background: var(--ink-mute);
+  left: 0; top: 11px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--mission-color, var(--green-600));
+  opacity: .16;
+}
+.mission-card__list li::after {
+  content: '';
+  position: absolute;
+  left: 6px; top: 14px;
+  width: 5px; height: 9px;
+  border: 2px solid var(--mission-color, var(--green-700));
+  border-top: 0; border-left: 0;
+  transform: rotate(42deg);
 }
 
 /* ============================================================
@@ -1458,51 +1509,54 @@ p { margin: 0 0 1rem; color: var(--ink-soft); }
 .domain-card:hover { transform: translateY(-6px); box-shadow: var(--sh-lift); }
 .domain-card:hover img { transform: scale(1.06); }
 
-/* ---- PILLARS: colour accent + lift ---- */
+/* ---- PILLARS: colour-coded cards with icon + accent ---- */
 .pillar {
-  padding: 28px 26px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: var(--sh-soft);
-  transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
-}
-.pillar:hover { transform: translateY(-4px); box-shadow: var(--sh-lift); }
-.pillar__num {
-  border-bottom: none;
-  padding-bottom: 0;
-  color: var(--accent);
-  font-size: 1.8rem;
-  margin-bottom: 12px;
-}
-
-/* ---- FLOW STEPS: active dot accent ---- */
-.step__icon { transition: color .25s, border-color .25s, background .25s, transform .25s var(--ease-out); }
-.step:hover .step__icon { color: var(--green-700); border-color: var(--green-300); transform: translateY(-3px); }
-
-/* ---- MISSION CARDS: colour bar + lift ---- */
-.mission-card {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  margin: 0;
   position: relative;
-  overflow: hidden;
+  padding: 32px 28px;
   background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
   box-shadow: var(--sh-soft);
+  overflow: hidden;
   transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
 }
-.mission-grid { gap: 18px; border-top: none; }
-.mission-card::after {
+.pillar::before {
   content: '';
-  position: absolute; left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: var(--mission-color, var(--green-600));
-  transform: scaleY(0); transform-origin: top;
-  transition: transform .35s var(--ease-out);
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--pc, var(--green-600));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .45s var(--ease-out);
 }
-.mission-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lift); background: #fff; }
-.mission-card:hover::after { transform: scaleY(1); }
-.mission-card__num { color: var(--mission-color, var(--green-700)); }
+.pillar:hover { transform: translateY(-6px); box-shadow: var(--sh-lift); }
+.pillar:hover::before { transform: scaleX(1); }
+.pillar__icon {
+  width: 58px; height: 58px;
+  border-radius: 16px;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--pc, var(--green-600)) 14%, #fff);
+  color: var(--pc, var(--green-700));
+  margin-bottom: 22px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pc, var(--green-600)) 20%, transparent);
+}
+.pillar__icon svg { width: 28px; height: 28px; }
+.pillar__num {
+  position: absolute;
+  top: 24px; right: 26px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--pc, var(--green-700));
+  opacity: .14;
+}
+
+/* ---- FLOW STEPS: node hover ---- */
+.step__icon { transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out); }
+.step:hover .step__icon { transform: translateY(-5px) scale(1.07); }
+
+/* (mission card styling consolidated in the MISSION CARDS base block) */
 
 /* ---- IMPACT: richer dark block ---- */
 .section--dark {
