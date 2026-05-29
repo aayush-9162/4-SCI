@@ -24,7 +24,13 @@ OUT.mkdir(parents=True, exist_ok=True)
 img = Image.open(SRC).convert("RGB")
 W, H = img.size
 
-col_bounds = [0, 369, 730, 1102, W]   # 4 columns
+# Per-row column boundaries — the source grid is sheared, so row 3 sits further
+# right (its col3/col4 gap is ~1131, not ~1102) which otherwise clips tile 11.
+col_bounds_by_row = [
+    [0, 369, 730, 1102, W],   # row 1
+    [0, 369, 730, 1102, W],   # row 2
+    [0, 369, 730, 1131, W],   # row 3
+]
 row_bounds = [0, 361, 699, H]         # 3 rows
 
 TOL = 46          # bg colour match tolerance per channel (edge trim)
@@ -40,6 +46,7 @@ def near(px, bg):
 
 
 for r in range(3):
+    col_bounds = col_bounds_by_row[r]
     for c in range(4):
         idx = r * 4 + c + 1
         sub = img.crop((col_bounds[c], row_bounds[r], col_bounds[c + 1], row_bounds[r + 1]))

@@ -39,7 +39,6 @@ export default function Header() {
       <span className="brand__mark">4</span>
       <span className="brand__title-wrap">
         4-SCI
-        <span className="brand__sub">Soil Smart · Sustainable Communities</span>
       </span>
     </Link>
   )
