@@ -769,6 +769,7 @@ p { margin: 0 0 1rem; color: var(--ink-soft); }
 }
 .feature-illustration svg { width: 100%; height: 100%; }
 .feature-illustration img { width: 100%; height: 100%; object-fit: contain; }
+.feature-illustration--photo img { object-fit: cover; }
 .feature-row--reverse .feature-illustration { margin-left: 0; margin-right: auto; }
 
 @media (max-width: 900px) {

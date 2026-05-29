@@ -136,8 +136,8 @@ export default function Home() {
               </ul>
               <Link to="/soil-smart-schools" className="btn btn--primary">Open the school playbook</Link>
             </div>
-            <div className="feature-illustration">
-              <img src="/domains/01.png" alt="Soil Health pictogram" />
+            <div className="feature-illustration feature-illustration--photo">
+              <img src="/img/schools-garden.jpg" alt="A freshly harvested kitchen-garden trug of vegetables" loading="lazy" />
             </div>
           </div>
 
@@ -159,8 +159,8 @@ export default function Home() {
               </ul>
               <Link to="/sustainable-villages" className="btn btn--primary">See a village dashboard</Link>
             </div>
-            <div className="feature-illustration">
-              <img src="/domains/08.png" alt="Community Action pictogram" />
+            <div className="feature-illustration feature-illustration--photo">
+              <img src="/img/village-community.jpg" alt="Villagers working together in lush green paddy fields" loading="lazy" />
             </div>
           </div>
         </div>
