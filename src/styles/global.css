@@ -116,6 +116,8 @@ p { margin: 0 0 1rem; color: var(--ink-soft); }
 .section--tight { padding: 56px 0; }
 
 .section--alt { background: var(--paper-soft); }
+.section--flush-top { padding-top: 24px; }
+.section--flush-bottom { padding-bottom: 24px; }
 
 .section--dark {
   background: var(--green-ink);

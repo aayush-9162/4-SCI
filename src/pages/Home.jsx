@@ -92,7 +92,7 @@ export default function Home() {
       </section>
 
       {/* ============ FLOW ============ */}
-      <section className="section">
+      <section className="section section--flush-top">
         <div className="container">
           <div className="section-head" data-reveal>
             <span className="eyebrow">How it works</span>
