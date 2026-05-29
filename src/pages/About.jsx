@@ -16,7 +16,7 @@ export default function About() {
 
       <section className="section">
         <div className="container">
-          <div className="feature-row">
+          <div className="feature-row" data-reveal>
             <div>
               <span className="eyebrow">Vision</span>
               <h2>Healthy soil, safer farming, sustainable villages.</h2>
@@ -30,20 +30,8 @@ export default function About() {
                 practical, safer and more sustainable farming practices.
               </p>
             </div>
-            <div className="feature-illustration">
-              <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
-                <rect width="400" height="300" fill="#D8F3DC" rx="24"/>
-                <circle cx="200" cy="150" r="100" fill="#fff" stroke="#2D6A4F" strokeWidth="3"/>
-                <g transform="translate(200,150)" textAnchor="middle">
-                  <text y="-30" fontFamily="DM Serif Display, serif" fontSize="32" fill="#2D6A4F">4-SCI</text>
-                  <text y="0" fontSize="12" fill="#1B4332">Soil Smart Schools</text>
-                  <text y="18" fontSize="12" fill="#1B4332">Sustainable Communities</text>
-                </g>
-                <circle cx="80" cy="80" r="32" fill="#74C69D"/>
-                <circle cx="320" cy="80" r="32" fill="#E9B23B"/>
-                <circle cx="80" cy="220" r="32" fill="#3DA5D9"/>
-                <circle cx="320" cy="220" r="32" fill="#E76F51"/>
-              </svg>
+            <div className="feature-illustration feature-illustration--photo">
+              <img src="/img/about-vision.jpg" alt="Hands cradling healthy living soil" loading="lazy" />
             </div>
           </div>
         </div>
