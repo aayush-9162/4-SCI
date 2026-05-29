@@ -33,7 +33,7 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <div className="hero__top">
-            <span className="hero__kicker">Soil Smart Schools · Sustainable Communities</span>
+            <span className="hero__kicker">🌱 Soil Smart Schools · Sustainable Communities</span>
             <h1 className="hero__title">
               Healthy soil. <em>Safer farming.</em> Stronger villages.
             </h1>
@@ -41,11 +41,19 @@ export default function Home() {
               A school–community platform where students learn practical green skills, farmers adopt
               safer practices, and villages track real sustainability progress.
             </p>
+            <div className="hero__stats">
+              <span><strong>12</strong> Domains</span>
+              <span><strong>60+</strong> Skills</span>
+              <span><strong>9</strong> Badges</span>
+            </div>
           </div>
 
           <div className="hero__domains">
             <div className="hero__domains-head">
-              <span className="hero__domains-label">The 12 sustainability domains</span>
+              <span className="hero__domains-label">
+                The 12 sustainability domains
+                <span className="hero__domains-count">12</span>
+              </span>
               <Link to="/skills-missions" className="hero__domains-link">View skill library →</Link>
             </div>
             <div className="domain-grid">
