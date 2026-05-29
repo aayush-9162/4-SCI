@@ -320,24 +320,31 @@ p { margin: 0 0 1rem; color: var(--ink-soft); }
 }
 .header-cta .btn--primary:hover::after { left: 130%; }
 
-/* Hamburger — animates into an X when active */
+/* Hamburger — modern filled green button with crisp white bars */
 .hamburger {
   display: none;
-  width: 44px; height: 44px;
-  border-radius: 11px;
-  border: 1px solid var(--line-strong);
-  background: #fff;
+  width: 46px; height: 46px;
+  border-radius: 14px;
+  border: none;
+  background: transparent;
   align-items: center; justify-content: center;
   flex-direction: column;
-  gap: 4px;
-  transition: border-color var(--t-base);
+  gap: 5px;
+  transition: transform .25s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
 }
-.hamburger:hover { border-color: var(--green-700); }
+.hamburger:active { transform: scale(.92); }
 .hamburger span {
-  width: 19px; height: 2px;
-  background: var(--ink);
+  width: 22px; height: 2.5px;
+  background: var(--green-ink);
   border-radius: 2px;
+  transition: width .3s var(--ease-out);
 }
+/* refined asymmetric bars */
+.hamburger span:nth-child(1) { width: 22px; }
+.hamburger span:nth-child(2) { width: 15px; align-self: flex-start; margin-left: 12px; }
+.hamburger span:nth-child(3) { width: 22px; }
+.hamburger:hover span:nth-child(2) { width: 22px; margin-left: 12px; }
 /* When the drawer is open, hide the hamburger — the drawer has its own close button */
 .hamburger.is-active { opacity: 0; pointer-events: none; }
 
