@@ -353,14 +353,9 @@ p { margin: 0 0 1rem; color: var(--ink-soft); }
   .header-cta .btn--ghost { display: none; }
 }
 
-@media (max-width: 760px) {
-  .site-header__inner { padding: 8px 15px; }
-  .brand__logo { height: 46px; }
-}
 @media (max-width: 480px) {
   .brand__sub { display: none; }
   .header-cta .btn--primary { padding: 10px 16px; }
-  .brand__logo { height: 42px; }
 }
 
 /* ============================================================
