@@ -36,10 +36,7 @@ export default function Header() {
 
   const Brand = ({ onClick }) => (
     <Link to="/" className="brand" onClick={onClick}>
-      <span className="brand__mark">4</span>
-      <span className="brand__title-wrap">
-        4-SCI
-      </span>
+      <img src="/logo.png" alt="4-SCI — Soil Smart Schools & Sustainable Communities Initiative" className="brand__logo" />
     </Link>
   )
 
