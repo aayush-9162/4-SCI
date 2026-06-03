@@ -224,7 +224,7 @@ p { margin: 0 0 1rem; color: var(--ink-soft); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 13px 15px;
+  padding: 4px 15px;
   gap: 24px;
 }
 
@@ -353,6 +353,9 @@ p { margin: 0 0 1rem; color: var(--ink-soft); }
   .header-cta .btn--ghost { display: none; }
 }
 
+@media (max-width: 760px) {
+  .site-header__inner { padding: 3px 12px; }
+}
 @media (max-width: 480px) {
   .brand__sub { display: none; }
   .header-cta .btn--primary { padding: 10px 16px; }
